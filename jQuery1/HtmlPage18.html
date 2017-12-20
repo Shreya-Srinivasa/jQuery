@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // Creating a JSON object
+            //var employeeJSON = {
+            //    "firstName": "Todd",
+            //    "lastName": "Grover",
+            //    "gender": "Male",
+            //    "salary": 50000
+            //};
+
+            //JSON array
+            //var employeesJSON = [
+            //    {
+            //        "firstName": "Todd",
+            //        "lastName": "Grover",
+            //        "gender": "Male",
+            //        "salary": 50000
+            //    },
+            //    {
+            //        "firstName": "Sara",
+            //        "lastName": "Baker",
+            //        "gender": "Female",
+            //        "salary": 40000
+            //    }];
+
+            var employeesJSON = {
+                "Todd": {
+                    "firstName": "Todd",
+                    "lastName": "Grover",
+                    "gender": "Male",
+                    "salary": 50000
+                },
+                "Sara": {
+                    "firstName": "Sara",
+                    "lastName": "Baker",
+                    "gender": "Female",
+                    "salary": 40000
+                }
+            };
+
+
+            // Accessing data from a JSON object
+            //var result = '';
+            //result += 'First Name = ' + employeeJSON.firstName + '<br/>';
+            //result += 'Last Name = ' + employeeJSON.lastName + '<br/>';
+            //result += 'Gender = ' + employeeJSON.gender + '<br/>';
+            //result += 'Salary = ' + employeeJSON.salary + '<br/>';
+
+            var result = employeesJSON.Todd.gender;
+            var result = employeesJSON.Sara.salary;
+
+            $('#resultDiv').html(result);
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <div id="resultDiv"></div>
+</body>
+</html>

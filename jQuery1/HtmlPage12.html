@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<html>
+<head>
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[name="skills"]').click(function () {
+                getCheckedCheckboxes("skills");
+            });
+            $('input[name="cities"]').click(function () {
+                getCheckedCheckboxes("cities");
+            });
+
+            var getCheckedCheckboxes = function (groupName) {
+                var result = $('input[name="' + groupName + '"]:checked');
+                if (result.length > 0) {
+                    var resultString = result.length + " checkbox(es) checked<br/>";
+                    result.each(function ()
+                    {
+                        var selectedValue = $(this).val();
+                        resultString += selectedValue + "-" + $('label[for="cb-"' + selectedValue + ']') + $(this).text() + "<br/>";
+                    });
+                    $('#div' + groupName).html(resultString);
+                }
+                else {
+                    $('#div' + groupName).html("No checkbox checked");
+                }
+            };
+
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    Skills :
+    <input type="checkbox" name="skills" value="js" />JavaScript
+    <label for="cb-js">Javascript</label>
+    <input type="checkbox" name="skills" value="jq" />jQuery
+    <label for="cb-jq">jQuery</label>
+    <input type="checkbox" name="skills" value="cs" />C#
+    <label for="cb-cs">C#</label>
+    <input type="checkbox" name="skills" value="vb" />VB
+    <label for="cb-vb">VB</label>
+    <br /><br />
+    Cities : 
+    <input type="checkbox" name="cities" value="ny" />New York
+    <label for="cb-ny">New York</label>
+    <input type="checkbox" name="cities" value="ln" />London
+    <label for="cb-ln">London</label>
+    <input type="checkbox" name="cities" value="ra" />Romania
+    <label for="cb-ra">Romania</label>
+    <br /><br />
+    <div id="divskills">
+    </div>
+    <div id="divcities">
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var textboxes = $('input[type="text"]');
+            textboxes.focus(function () {
+                var helpDiv = $(this).attr('id');
+                //here it comes
+
+                $.ajax({
+                    url: 'GetHelpText.aspx',
+                    data: { HelpTextKey: helpDiv },
+                    dataType: 'xml',
+                    method: 'post',
+                    success: function (response, status, xhr) {
+                        var jqueryXml = $(response);
+                        var textElement = jqueryXml.find('Text');
+                        $('#' + helpDiv + 'HelpDiv').html(textElement.text());
+                    }
+                });
+            });
+            textboxes.blur(function () {
+                var helpDiv = $(this).attr('id') + 'HelpDiv';
+                $('#' + helpDiv).html('');
+            });
+        
+        //load function
+                //$('#' + helpDiv + 'HelpDiv').load('GetHelpText.aspx', { HelpTextKey: helpDiv }, function (response, status, xhr) {
+                //    if (status == 'error')
+                //    {
+                //        var statusMessage = 'status : ' + xhr.status + '<br/>';
+                //        statusMessage += 'status Text : ' + xhr.statusText + '<br/>';
+                //        statusMessage += 'response : ' + xhr.response + '<br/>';
+
+                //        $('#divStatus').html(statusMessage);
+                //    }
+
+                //get
+                //$.get('GetHelpText.aspx', { HelpTextKey: helpDiv }, function (response) {
+                //    var jqueryXml = $(response);
+                //    var textElement = jqueryXml.find('Text');
+                //    $('#' + helpDiv + 'HelpDiv').html(textElement.text());
+                //}, 'xml');
+
+                //post
+    </script>
+</head>
+<body style="font-family:Arial">
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td><input id="firstName" type="text" /></td>
+            <td><div id="firstNameHelpDiv"></div></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input id="lastName" type="text" /></td>
+            <td><div id="lastNameHelpDiv"></div></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input id="email" type="text" /></td>
+            <td><div id="emailHelpDiv"></div></td>
+        </tr>
+        <tr>
+            <td>Income</td>
+            <td><input id="income" type="text" /></td>
+            <td><div id="incomeHelpDiv"></div></td>
+        </tr>
+    </table>
+    <br />
+    <div id="divStatus"></div>
+</body>
+</html>
+

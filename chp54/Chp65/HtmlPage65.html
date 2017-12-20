@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#txtUserName').keyup(function () {
+                var username = $(this).val();
+
+                if (username.length >= 3)
+                {
+                    $.ajax({
+                        url: 'RegistrationService.asmx / UserNameExists',
+                        method: 'post',
+                        data: { userName: username },
+                        dataType: 'json',
+                        success: function (data) {
+                            var divElement = ('#divOutput');
+                            var spanElement = ('#spanAvailableUserName');
+                            var linkElement = ('#linkAvailableUserName');
+
+                            if (data.UserNameInUse)
+                            {
+                                divElement.text(username + ' is already in use. Try another?');
+                                divElement.css('color', 'red');
+                                spanElement.text('Available : ');
+                                linkElement.text(data.userName).click(function () {
+                                    $('#txtUserName').val($(this).text());
+                                    divElement.text('');
+                                    spanElement.text('');
+                                    linkElement.text('');
+                                });
+                            }
+                            else
+                            {
+                                divElement.text(username + ' available');
+                                divElement.css('color', 'green');
+                                spanElement.text('');
+                                linkElement.text('');
+                            }
+                        },
+                        error: function (error) {
+                            alert(error);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <table>
+        <tr>
+            <td>
+                UserName :
+            </td>
+            <td>
+                <input id="txtUserName" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div id="divOutput"></div>
+                <span id="spanAvailableUserName"></span>
+                <a id="linkAvailableUserName" href="#"></a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

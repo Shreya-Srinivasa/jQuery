@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sliderHeight, #sliderWidth').slider({
+                min: 100,
+                max: 500,
+                slide: refreshImage
+            });
+
+            $('#divOpacity').slider({
+                min: 0,
+                max: 100,
+                value: 100,
+                slide: refreshImage
+            });
+
+            function refreshImage() {
+                var height = $('#sliderHeight').slider('value');
+                var width = $('#sliderWidth').slider('value');
+                var opacity = $('#divOpacity').slider('value')
+                $('#myImg').css({
+                    height: height,
+                    width: width,
+                    opacity: opacity / 100
+                });
+                $('divDimensions').html('Height' + height + ' pixels<br/>' +
+                    'Width' + width + ' pixels<br/>' + 
+                    'Opacity' + opacity/100 + '<br/>')
+                
+        });
+    </script>
+</head>
+<body>
+    <div id="sliderHeight"></div>
+    <br />
+    <div id="sliderWidth"></div>
+    <br />
+    <div id="divOpacity"></div>
+    <br />
+    <div id="divDimensions"></div>
+    <br />
+    <img id="myImg" src="Tulips.jpg"
+         style="width: 100px; height: 100px" />
+</body>
+</html>

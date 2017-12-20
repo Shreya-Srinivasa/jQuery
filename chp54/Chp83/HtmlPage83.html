@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../jquery-3.2.1.js"></script>
+    <link href="../jquery-ui.css" rel="stylesheet" />
+    <script src="../jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var pbd = $('#progressBar');
+            pbd.progressbar();
+
+            $('btn').click(function () {
+                pbd.progressbar({
+                    value: parseInt($('#ddlPercentage').val()),
+                    change: function ()
+                    {
+                        $('spanPB').text(pbd.progressbar('value') + '%');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        Select Percentage : 
+        <select id="ddlPercentage">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+            <option value="60">60</option>
+            <option value="70">70</option>
+            <option value="80">80</option>
+            <option value="90">90</option>
+            <option value="100">100</option>
+        </select>
+        <br />
+        <button id="btn">Submit</button>
+        <br />
+        <br />
+        <div id="progressBar" style="position:relative">
+            <span id="spanPB" style="position:absolute; left:50%; top:20%"></span>
+        </div>
+
+    </form>
+
+</body>
+</html>

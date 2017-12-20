@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-.3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnGetAllEmployees').click(function () {
+
+                $.ajax({
+                    url: 'EmployeeService.asmx/GetAllEmployees',
+                    method: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        var employeeTbl = $('#tblEmployee tbody');
+                        employeeTbl.empty();
+
+                        $(data).each(function (index, emp) {
+                            employeeTbl.append
+                                (
+                                '<tr><td>' + emp.ID + '</td><td>' +
+                                    emp.Name + '</td><td>' +
+                                    emp.Gender + '</td><td>' +
+                                    emp.Salary + '</td></tr>'
+                                )
+                        });
+
+                        var jxml = $(data);
+                        $('#txtName').val(data.Name);
+                        $('#txtGender').val(data.Gender);
+                        $('#txtSalary').val(data.Salary);
+                    },
+                    errror: function (error) {
+                        alert(error);
+                    }
+                });
+
+            });
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <input type="button" id="btnGetAllEmployees" value="Get All Employees" />
+    <br /><br />
+    <table id="tblEmployee" border="1" style="border-collapse:collapse">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>

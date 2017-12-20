@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('ul').delegate('li', 'click', function () {
+                $(this).fadeOut(500);
+            });
+
+            $('#btnAdd').on('click', function () {
+                $('ul').append('<li>New List Item</li>');
+            });
+
+            $('#btnUndelegate').click(function () {
+                $('ul').undelegate('li', 'click');
+            });
+
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <input id="btnAdd" type="button" value="Add a New List Item" />
+    <input id="btnUndelegate" type="button" value="Undelegate" />
+    <ul>
+        <li>List Item</li>
+        <li>List Item</li>
+    </ul>
+</body>
+</html>

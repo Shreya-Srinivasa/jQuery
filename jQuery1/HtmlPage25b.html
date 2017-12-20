@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <style>
+        .textBoxStyle {
+            background-color: saddlebrown;
+            color: white;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[type="text"]').each(function () {
+                $(this).focus(function () {
+                    $(this).addClass('textBoxStyle');
+                });
+                $(this).blur(function () {
+                    $(this).removeClass('textBoxStyle');
+                });
+            });
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" /></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input type="text" /></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <select>
+                    <option value="select">Please Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" /></td>
+        </tr>
+    </table>
+</body>
+</html>

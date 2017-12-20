@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        .ButtonStyle {
+            background-color: red;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (event) {
+            $('#btnClickMe').on('click mouseover mouseout', function () {
+                if (event.type == "click")
+                {
+                    $('#divResult').html('Button Clicked at X = ' + event.pageX + ', Y = ' + event.pageY);
+                }
+
+                else if (event.type == "mouseover")
+                {
+                    $(this).addClass('ButtonStyle');
+                }
+
+                else
+                {
+                    $(this).removeClass('ButtonStyle');
+                }
+            });
+            $('#btnEnableMouseOverEffect').on('click mouseover mouseout', function () {
+                $(this).addClass('ButtonStyle');
+            });
+            $('#btnDisableMouseOverEffect').on('click mouseover mouseout', function () {
+                $('#btnClickMe').off('mouseover');
+            });
+            });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <input id="btnClickMe" type="button" value="Click Me" />
+    <input id="btnEnableMouseOverEffect" type="button" value="Enable Mouse Over Effect" />
+    <input id="btnDisableMouseOverEffect" type="button" value="Disable Mouse Over Effect" />
+    <br /><br />
+    <div id="divResult"></div>
+</body>
+</html>
+

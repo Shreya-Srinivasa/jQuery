@@ -1,0 +1,39 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script src="jquery-ui.js"></script>
+    <link href="jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#txtName').autocomplete({
+                minLength: 1,
+                source: function (request, response) {
+                    $.ajax({
+                        url: 'StudentServiceChp73.asmx/GetStudentNames',
+                        method: 'post',
+                        contentType: 'application/json;charset=utf-8',
+                        data: JSON.stringify({ term: request.term }),
+                        dataType: 'json',
+                        success: function (data) {
+                            response(data.d);
+                        },
+                        error: function (err) {
+                            alert(err);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        Student Name :
+        <asp:TextBox ID="txtName" runat="server">
+        </asp:TextBox>
+    </form>
+</body>
+</html>

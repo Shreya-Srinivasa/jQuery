@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('div').after('span');
+
+             //both are same
+            //$('div').after('<h4>Programming<h4/>');
+            //('<h4>Programming<h4/>').insertAfter($('div'));
+
+             //both are same
+            //$('div').before('<h4>Programming<h4/>');
+            //('<h4>Programming<h4/>').insertBefore($('div'));
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <span>Training Courses</span>
+    <div>jQuery</div>
+    <div>C#</div>
+    <div>ASP.NET</div>
+</body>
+</html>

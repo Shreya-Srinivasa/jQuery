@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('div[title"]').filter(function () {
+                return RegExp('Div', 'i').test($(this).attr('title'));
+            }).css('border', '3px solid red');
+        });
+    </script>
+</head>
+<body>
+    <div title="DivTitle">
+        DIV 1
+    </div>
+    <br />
+    <div title="DIVTITLE">
+        DIV 2
+    </div>
+    <br />
+    <div title="divtitle">
+        DIV 3
+    </div>
+</body>
+</html>
+             <!--for insensitive <!--return $(this).attr('title').toLowerCase() == "divtitle"-->-->

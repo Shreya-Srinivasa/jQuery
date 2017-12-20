@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .myDivClass {
+            width: 150px;
+            padding: 5px;
+            font-size: 18px;
+            border: 1px solid black;
+            opacity: .4;
+            background-color: red;
+            color: white;
+        }
+    </style>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#myButton').click(function () {
+                $.fx.off = $('#cb').is(':checked');
+                $('#myDiv1')
+                    .animate({
+                        'width' : 500,
+                        'padding': 20,
+                        'font-size': 50,
+                        'border-width': 10,
+                         'opacity' : 1
+                    }, 1500);
+
+                    //.animate({ 'width': 500 }, { duration: 1500, queue: false })
+                    //.animate({ 'padding': 500 }, { duration: 1500, queue: false })
+                    //.animate({ 'font-size': 500 }, { duration: 1500, queue: false })
+                    //.animate({ 'border-width': 500 }, { duration: 1500, queue: false })
+                    //.animate({ 'opacity': 500 }, { duration: 1500, queue: false });
+                   
+                    //.queue(function () {
+                    //    console.log('Calls Queued = ' + $(this).queue('fx').length);
+                    //    $(this).dequeue();
+                    //});
+
+                $('#myDiv2')
+                    .animate({
+                        'width': 500,
+                        'padding': 20,
+                        'font-size': 50,
+                        'border-width': 10,
+                        'opacity': 1
+                    }, 1500);
+            });
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <input type="button" id="myButton" value="Start Animation" />
+    <input type="checkbox" id="cb" />Turn off all Animations
+
+    <br /><br />
+    <div id="myDiv1" class="myDivClass">
+        jQuery Animations
+    </div>
+    <br />
+    <div id="myDiv2" class="myDivClass">
+        Hello World
+    </div>
+</body>
+</html>>

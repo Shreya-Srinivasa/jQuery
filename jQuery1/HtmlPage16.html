@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var result = '';
+            $('li').each(function () {
+                result += "<br/>" + $(this).text()
+               
+            $('#divResult').html(result);
+
+        });
+    });
+                //if ($(this).text() == "UK")
+                //{
+                //    return false;
+                //}
+                //alert($(this).text());
+
+            //alternate
+            //$('li').each(function (index, element) {
+            //    alert(index + " : " + $(element).text());
+                
+    
+    </script>
+</head>
+<body style="font-family:Arial">
+    <ul>
+        <li>US</li>
+        <li>India</li>
+        <li>UK</li>
+        <li>Canada</li>
+        <li>Australia</li>
+    </ul>
+    <div id="divResult">
+
+    </div>
+</body>
+</html>

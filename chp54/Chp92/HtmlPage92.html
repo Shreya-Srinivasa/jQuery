@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../jquery-3.2.1.js"></script>
+    <link href="../jquery-ui.css" rel="stylesheet" />
+    <script src="../jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.divClass').draggable();
+
+            $('.divClass').mousedown(function () {
+                var maxZindex = 0;
+                $(this).siblings('.divClass').each(function () {
+                    var currentZindex = Number($(this).css('z-index'));
+                    maxZindex = currentZindex > maxZindex ? currentZindex : maxZindex;
+                });
+
+                $(this).css('z-index', maxZindex + 1);
+            });
+        });
+    </script>
+    <style>
+
+        .divClass {
+            font-family: Arial;
+            height: 200px;
+            width: 200px;
+            color: white;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            z-index: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="redDiv" class="divClass" style="background-color: red">
+        Red Div
+    </div>
+
+    <div id="greeDiv" class="divClass" style="background-color: green">
+        Green Div
+    </div>
+
+    <div id="blueDiv" class="divClass" style="background-color: blue">
+        Blue Div
+    </div>
+
+    <div id="brownDiv" class="divClass" style="background-color: brown">
+        Brown Div
+    </div>
+</body>
+</html>

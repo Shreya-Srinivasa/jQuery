@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../jquery-3.2.1.js"></script>
+    <link href="../jquery-ui.css" rel="stylesheet" />
+    <script src="../jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnAnimate').click(function () {
+                $('#myDiv').toggleClass('redDiv', 2000);
+            });
+        });
+    </script>
+    <style>
+        .redDiv {
+            background-color: red;
+            color: white;
+            font-size: 20px;
+            border: 5px solid black;
+            padding: 5px;
+            width: 500px;
+        }
+    </style>
+</head>
+<body style="font-family: Arial">
+    <form id="form1" runat="server">
+        <div id="myDiv">
+            At Pragim Technologies, training is delivered by real time software experts
+            having more than 10 years of experience. Interview questions and real time
+            scenarios discussion on topics covered for the day. Realtime projects
+            discussion relating to the possible interview questions. Trainees can attend
+            training and use lab untill you get a job. Resume preperation and mock up
+            interviews. 100% placement assistance. 24 hours lab facility.
+        </div>
+        <br />
+        <input type="button" id="btnAnimate" value="Animate" />
+    </form>
+</body>
+</html>

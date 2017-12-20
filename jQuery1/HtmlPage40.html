@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn').on({
+                click: function ()
+                {
+                    alert('Button clicked');
+                },
+                mouseover: function ()
+                {
+                    $(this).css('background-color', 'yellow');
+                },
+                mouseout: function ()
+                {
+                    $(this).css('background-color', 'white');
+                },
+
+            });
+            
+            var jqueryObject = $('#btn');
+            var rawDOMelement = jqueryObject.get(0);
+            
+            var eventObject = $._data(rawDOMelement, 'events');
+            if (eventObject != undefined && eventObject.click != undefined)
+            {
+                alert('Click event already exists');
+            }
+            else
+            {
+                //$('#btn').on('click', function () {
+                //    alert('Button Clicked');
+                //});
+
+                 alert('Click event does not exists');
+            }
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <input id="btn" type="button" value="Click Me" />
+</body>
+</html>

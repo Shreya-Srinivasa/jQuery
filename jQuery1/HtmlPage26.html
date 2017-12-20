@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var jsObject = {
+                'Bank': 'Gringotts',
+                'Shopping Area': 'Diagon Alley',
+                'School': 'Hogwarts',
+                'Village' : 'Hogsmeade'
+            };
+            // $.each function
+            //var intArray = [8, 3, 5, 10, 6];
+            var result = ''
+
+            $.each(intArray, function (key, element) {
+                result += 'Key = ' + key + ', Value = ' + element + '<br/>';
+            });
+
+            // .each function
+            //$('li').each(function (index, element) {
+            //    result += 'Index = ' + index + ', Value = ' + $(element).text + '<br/>';
+            //});
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <ul>
+        <li>Knockturn Alley</li>
+        <li>Privet Drive</li>
+        <li>Hogwarts</li>
+        <li>Diagon Alley</li>
+        <li>Hogsmeade</li>
+    </ul>
+    <div id="resultDiv"></div>
+</body>
+</html>

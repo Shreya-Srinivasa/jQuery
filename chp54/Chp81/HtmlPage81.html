@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../jquery-3.2.1.js"></script>
+    <link href="../jquery-ui.css" rel="stylesheet" />
+    <script src="../jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#txtName').tooltip({
+                content: getTooltipData,
+                track: true,
+                show: { delay: 100, duration: 500, effect: 'slideUp' },
+                hide: { delay: 100, duration: 500, effect: 'slideDown' }
+
+            })
+            function getTooltipData()
+            {
+                return 'Tooltip from func';
+            }
+        });
+    </script>
+</head>
+<body>
+    <label id="lblName" for="txtName" title="Full Name">Name</label>
+    <input id="txtName" type="text" title="Your full name as it appears in pasport" />
+</body>
+</html>

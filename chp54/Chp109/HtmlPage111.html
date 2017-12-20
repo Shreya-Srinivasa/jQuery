@@ -1,0 +1,56 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" />
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                columns: [
+                    { 'data': 'Id' },
+                    { 'data': 'FirstName' },
+                    { 'data': 'LastName' },
+                    { 'data': 'Gender' },
+                    { 'data': 'JobTitle' }
+                ],
+                bServerSide: true,
+                //sAjaxSource: 'EmployeeDataHandler.ashx'
+                sAjaxSource: 'EmployeeService.asmx/GetEmployees',
+                sServerMethod: 'post'
+
+            });
+        });
+    </script>
+</head>
+<body style="font-family: Arial">
+    <form id="form1" runat="server">
+        <div style="width: 900px; border: 1px solid black; padding: 3px">
+            <table id="datatable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Gender</th>
+                        <th>Job Title</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Gender</th>
+                        <th>Job Title</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

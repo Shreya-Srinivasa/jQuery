@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../jquery-ui.js"></script>
+    <link href="../jquery-ui.css" rel="stylesheet" />
+    <script src="../jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#slider').slider({
+                min: 20,
+                max: 120, orientation: 'horizontal',
+                start: function (event, ui) {
+                    $('#divStart').html('Start = ' + ui.value);
+                },
+                stop: function (event, ui) {
+                    $('#divStop').html('Stop = ' + ui.value);
+                },
+                slide: function (event, ui) {
+                    $('#divSlide').html('Slide = ' + ui.value);
+                }
+                    })
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="slider"></div>
+        <br />
+        <div id="divStart"></div>
+        <div id="divStop"></div>
+        <div id="divSlide"></div>
+        <!--<div id="myDiv" style="font-size:20px">
+            Slider Widget
+        </div>-->
+    </form>
+</body>
+</html>

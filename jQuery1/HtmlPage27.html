@@ -1,0 +1,27 @@
+﻿j<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var result = '';
+
+           alert ($('li').map(function (index, element) {
+                result += ($(element).text());
+            }).get.join('|'));
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+
+    <ul>
+        <li>Knockturn Alley</li>
+        <li>Gringotts</li>
+        <li>Hogwarts</li>
+        <li>Diagon Alley</li>
+        <li>Hogsmeade</li>
+    </ul>
+</body>
+</html>

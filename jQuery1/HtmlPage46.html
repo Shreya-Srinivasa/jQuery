@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#img').click(function () {
+                $(this)
+                    .animate({ 'left': '300' })
+                    .animate({ 'top': '200' })
+                    .animate({ 'left': '10' })
+                    .animate({ 'top': '10' });
+            });
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <img id="img" height="100" width="100" style="position:absolute"
+         src="Images/kingfishers_nature.jpg" />
+</body>
+</html>
+

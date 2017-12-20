@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .img
+        {
+            height: 100px;
+            width: 100px;
+            border: 3px solid grey;
+        }
+    </style>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //chp 44
+            $('#divContainer').on({
+                mouseover: function () {
+                    $(this).css({
+                        'cursor': 'hand',
+                        'border-Color': 'red',
+                    });
+                },
+                mouseout: function () {
+                    $(this).css({
+                        'cursor': 'default',
+                        'border-Color': 'grey',
+                    });
+                },
+                click: function () {
+                    var imgUrl = $(this).attr('src');
+                    var effect = $('#selectEffect').val();
+                    var duration = $('#selectDuration').val();
+                    var mainImg = $('#mainImg');
+
+                    if (effect == 'Fade') {
+                        mainImg.fadeOut(duration, function () {
+                            $(this).attr('src', imageUrl);
+                        }).fadeIn(duration);
+                    }
+                    else {
+                        mainImg.slideUp(duration, function () {
+                            $(this).attr('src', imageUrl);
+                        }).slideDown(duration);
+                    }
+                }
+
+            });
+
+            var mainImgElement = $('#mainImage');
+            var height = parseInt(mainImgElement.attr('height'));
+            var width = parseInt(mainImgElement.attr('width'));
+
+            $('#btnEnlarge').click(function () {
+                height += 100;
+                width += 100;
+                mainImgElement.animate({
+                    'height': height,
+                    'width' : width
+                });
+            });
+
+            $('#btnEnlarge').click(function () {
+                height -= 100;
+                width -= 100;
+                mainImgElement.animate({
+                    'height': height,
+                    'width': width
+                });
+            });
+
+            //chp 45
+            var imageURLs = new Array();
+            var intervalId;
+            var btnStart = $('#btnStartSlideShow');
+            var btnStop = $('#btnStopSlideShow');
+
+            $('#divContainer img').each(function () {
+                imageURLs.push($(this).attr('src'));
+            });
+
+            function setImage()
+            {
+                var currentImgURL = mainImgElement.attr('src')
+                var currentImageIndex = $.inArray(currentImgURL, imageURLs);
+
+                if (currentImageIndex = (imageURLs.length - 1))
+                {
+                    currentImageIndex = -1;
+                }
+
+                mainImgElement.attr('src', imageURLs[currentImageIndex + 1]);
+            }
+
+            btnStart.click(function () {
+                intervalId = setInterval(setImage, 1000);
+                $(this).attr('disabled', 'disabled');
+                btnStop.removeAttr('disabled');
+            });
+
+            btnStop.click(function () {
+                clearInterval(intervalId);
+                $(this).attr('disabled', 'disabled');
+                btnStart.removeAttr('disabled');
+
+            }).attr('disabled', 'disabled');
+        });
+    </script>
+</head>
+<body>
+    Select Effect : <select id="selectEffect">
+        <option value="Fade">Fade</option>
+        <option value="Slide">Slide</option>
+    </select>
+    Time in Seconds : <select id="selectDuration">
+        <option value="0.5">0.5</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <input type="button" id="btnEnlarge" value="Enlarge" />
+    <input type="button" id="btnShrink" value="Shrink"/>
+    
+    <br /><br />
+    
+    <input type="button" id="btnStartSlideShow" value="Start SlideShow" />
+    <input type="button" id="btnStopSlideShow" value="Stop SlideShow" />
+
+    <br /><br />
+
+    <img id="mainImg" src="Images/kingfishers_nature.jpg" height="500" width="540" style="border:3px solid grey"/>
+    <br />
+    <div id="divContainer">
+        <img src="Images/kingfishers_nature.jpg" class="img" />
+        <img src="Images/park_nature.jpg" class="img" />
+        <img src="Images/path_nature.jpg" class="img"/>
+    </div>
+</body>
+</html>

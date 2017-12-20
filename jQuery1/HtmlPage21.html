@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var result = 'DIV Elements with Title attribute = ' + $('div[title]').length + '<br/>'
+            result += 'Removing Title Attribute<br/>'
+            $('div[title]').removeAttr('title');
+            result += $('div[title]').length
+
+            //$('div').attr({
+            //    'title': 'New DIV Title',
+            //    'style': 'border:3px solid black',
+            //    'name': 'My DIV'
+            //});
+
+            //var result = '';
+            //$('div').each(function () {
+            //    result += 'title = ' + $(this).attr('title') + '<br/>';
+            //    result += 'style = ' + $(this).attr('style') + '<br/>';
+            //    result += 'name = ' + $(this).attr('name') + '<br/>';
+            //});
+            $('#resultSpan').html = result;
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <div id="div1" title="My DIV1">
+        DIV 1
+    </div>
+    <div id="div2" title="My DIV2">
+        DIV 2
+    </div>
+    <span id="resultSpan">
+
+    </span>
+</body>
+</html>

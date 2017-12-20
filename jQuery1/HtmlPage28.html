@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var intArray = [8, 3, 5, 10, 6];
+
+            $.each(intArray, function (index, element) {
+                document.write(element + ',')
+            });
+
+            $.map(intArray, function (index, element) {
+                document.write(element + ',')
+            });
+
+            document.write('each = ' + result1 + '<br/>' + 'map = ' + result2 + '<br/>')
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+
+</body>
+</html>

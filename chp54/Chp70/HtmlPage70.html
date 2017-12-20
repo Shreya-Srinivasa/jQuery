@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var currentPageNumber = 1;
+            loadData(currentPageNumber);
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() == $(document).height() - $(window).height())
+                {
+                    currentPageNumber += 1;
+                    loadData(currentPageNumber);
+                }
+            });
+
+            function loadData(currentPage)
+            {
+                $.ajax({
+                    url: 'EmployeeServiceChp70/GetEmployees',
+                    method: 'post',
+                    data: { pageNumber: currentPage, pageSize: 50 },
+                    dataType: 'json',
+                    success: function (data)
+                    {
+                        var empTable = $('#tblEmployee tbody')
+                        {
+                            $(data).each(function (index, emp) {
+                                empTable.append('<tr><tr>' + emp.ID + 
+                                    '<td/><td>' + emp.Name + '<td/><td>'
+                                    + emp.Gender + '<td/><td>' + emp.Salary + 
+                                    '<td/><tr/>'
+                                    )
+
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body style="font-family:Arial">
+    <h1>The data will be loaded on demand as you scroll down the page</h1>
+    <table id="tblEmployee" border="1"
+           style="border-collapse:collapse; font-size:xx-large">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>
+
